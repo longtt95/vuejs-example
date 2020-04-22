@@ -9,7 +9,7 @@
         >
             <v-list>
                 <template v-for="(item, index) in items">
-                    <v-list-tile :key="index">
+                    <v-list-tile :key="index" :to="item.url">
                         <v-list-tile-content>
                             {{ item.title }}
                         </v-list-tile-content>
@@ -18,11 +18,11 @@
                 </template>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar app color="light-blue" dark>
-            <v-toolbar-side-icon
+        <v-app-bar app color="light-blue" dark>
+            <v-app-bar-nav-icon
                 class="hidden-md-and-up"
                 @click="drawer = !drawer"
-            >aa</v-toolbar-side-icon>
+            ></v-app-bar-nav-icon>
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
             <v-btn flat class="hidden-sm-and-down">Menu</v-btn>
@@ -31,7 +31,7 @@
             <v-btn color="brown lighten-3" class="hidden-sm-and-down"
                 >JOIN</v-btn
             >
-        </v-toolbar>
+        </v-app-bar>
     </span>
 </template>
 
@@ -42,8 +42,9 @@ export default {
         return {
             appTitle: 'Meal Prep',
             drawer: false,
+            item: 1,
             items: [
-                { title: 'Menu' },
+                { title: 'Menu', url: '/menu' },
                 { title: 'Sign In' },
                 { title: 'Join' }
             ]
